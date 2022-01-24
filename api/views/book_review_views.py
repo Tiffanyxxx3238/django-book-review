@@ -31,16 +31,16 @@ def add_review(request):
     return Response({
         'success': True,
         'data':
-        {
-            'no': book.pk,
-            'user_id': book.user.pk,
-            'name': book.name,
-            'title': book.title,
-            'comment': book.comment,
-            'book_tags': [
-                {
-                    'tag_name': tag.name
-                } for tag in tags if tags.exists()
-            ]
-        }
+            {
+                'no': book.pk,
+                'user_id': book.user.pk,  # pk可改為name,birth等想要顯示的資訊
+                'name': book.name,
+                'title': book.title,
+                'comment': book.comment,
+                'book_tags': [
+                    {
+                        'tag_name': tag.name
+                    } for tag in tags if tags.exists()
+                ]
+            }
     })
