@@ -9,7 +9,7 @@ from api.serializers.book_review_serializers import *
 
 
 @api_view(['POST'])
-@user_login_required
+@user_login_required  # 這行自己想打什麼就加什麼
 def add_review(request):
     data = request.data
     serializer = BookReviewSerializer(data=data)
