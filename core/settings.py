@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-l-8$kat#$ot5@v*sjmj%sxir#+%9qs443anu35iwgi$33-f5)f
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['postgres://dbhajyddfqckhh:39d03ca8a27cbe0dfdb98bdbbdac90c6731c01bb8ad13800c95ec5e462f027b8@ec2-3-222-49-168.compute-1.amazonaws.com:5432/dah8rfah7fatje']
+ALLOWED_HOSTS = ['bookapi0124.herokuapp.com']
 
 # Application definition
 
