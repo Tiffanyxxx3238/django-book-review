@@ -29,9 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-urlpatterns = [
-    path('api/auth/', include('api.urls.auth_urls')),
-]
 
 # Application definition
 
