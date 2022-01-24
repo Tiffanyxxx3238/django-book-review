@@ -91,6 +91,7 @@ def edit_review(request, pk):
             }
     })
 
+
 @api_view()
 @user_login_required
 def get_all_reviews(request):
@@ -116,6 +117,41 @@ def get_all_reviews(request):
             for book in books
         ]
     })
+
+
+@api_view()
+@user_login_required
+def get_review(request, pk):
+    user_id = request.session['user_id']
+    book_no = pk
+    bo = Book.objects.filter(no=book_no, user_id=user_id)
+    if not bo.exists():
+        return Response({'success': False, 'message': '沒有此評論'}, status=status.HTTP_404_NOT_FOUND)
+
+    return Response({
+        'success': True,
+        'data': [
+            {
+                'no': book.no,
+                'user_id': book.user.pk,
+                'name': book.name,
+                'title': book.title,
+                'comment': book.comment,
+                'book_tags': [
+                    {
+                        "tag_name": tag.name
+                    }
+                    for tag in BookTag.objects.filter(book_no=book.pk)
+                ]
+            }
+            for book in bo
+        ]
+    })
+
+    # return Response({'success': True, 'message': '查詢成功'
+    # bo.first().name
+    # })
+
 
 @api_view(['DELETE'])
 @user_login_required
