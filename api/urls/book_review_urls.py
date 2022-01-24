@@ -10,4 +10,5 @@ urlpatterns = [
     path('all/', get_all_reviews, name='all'),
     path('get/<int:pk>/', get_review, name="one"),
     path('delete/<int:pk>/', delete_review, name='delete'),
+    path('deletetag/<int:pk>/',delete_tag, naem='deletetag')
 ]

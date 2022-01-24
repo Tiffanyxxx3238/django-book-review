@@ -167,3 +167,16 @@ def delete_review(request, pk):
     book.delete()
 
     return Response({'success': True, 'message': '刪除成功'})
+
+
+@api_view(['DELETE'])
+@user_login_required
+def delete_tag(request, pk1, pk2):
+    book = Book.objects.filter(no=pk1, user_id=request.session['user_id'])
+    if not book.exists():
+        return Response({'success': False, 'message': '沒有此評論'}, status=status.HTTP_404_NOT_FOUND)
+
+    book_tags = BookTag.objects.filter(book_no=pk1, no=pk2)
+    book_tags.delete()
+
+    return Response({'success': True, 'message': '標籤刪除成功'})
